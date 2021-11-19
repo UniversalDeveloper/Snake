@@ -17,14 +17,14 @@ namespace Snake
         public static void startGame()
         {
             Console.Clear();
-            CreatGameEl();
-            Stopwatch sw = new Stopwatch();//отображаем движение змейки на єкране
+            сreatGameEl();
+            Stopwatch sw = new Stopwatch();//вычесляет точное время работы операции
             while (true)// главный цикл отвечающий за отрисовку перемещения змеи по полю
             {
                 sw.Restart();
-                while (sw.ElapsedMilliseconds <= 200)// каждіе 200 милисикунд віполняем отрисовку змеии на єкране
-                {
 
+                while (sw.ElapsedMilliseconds <= 200)// проверка управления между кадрами была ли нажата клавиша поворота
+                {
                     if (Console.KeyAvailable)// если указан поворот змея поворачивае в указаннам
                                              // напровлении в противном случае она движется по заданной траектории
                     {
@@ -32,11 +32,12 @@ namespace Snake
                         snake.Rotation(key.Key);
                     }
                 }
-                if (snake.Eat(foodFactory.food))
+                if (snake.Eat(foodFactory.food))//еслт змея сьела еду
                 {
-                    foodFactory.CreateFood();
+                    foodFactory.CreateFood();//создаем новую еду
                 }
-                snake.Move();
+                snake.Move();// в бесконечном цикле наша змея постоянно движется по указанной траекторие
+
                 //условие для гейм овер
                 if (snake.IsHitWalls(snake.GetHead()) || snake.IsHitBody(snake.GetHead()))
                 {
@@ -44,11 +45,11 @@ namespace Snake
                 }
             }
             snake.RemoveOlldSnake();//очистить змею
-            Console.WriteLine("вася");
+            Console.WriteLine("вася");// сообщить игроку о проигеше
         }
 
 
-        public static void CreatGameEl()
+        public static void сreatGameEl()
         {
             Console.SetWindowSize(x + 1, y + 1);
             Console.SetBufferSize(x + 1, y + 1);
@@ -58,7 +59,7 @@ namespace Snake
             snake = new Snake(x / 2, y / 2, 3);
             foodFactory = new FoodFactory(x, y, '@');
             foodFactory.CreateFood();
-            //  time = new Timer(Loop, null, 0, 200);
+
 
         }
 

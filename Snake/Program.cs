@@ -10,7 +10,7 @@ namespace Snake
         static void Main()
         {
            
-               while (true)// бесконечній цикл віполняющий главную логику двидения змеии
+               while (true)// бесконечній цикл віполняющий главную логику двидения змеии и
                {
                 StartGame.startGame();
                   // startGame();
